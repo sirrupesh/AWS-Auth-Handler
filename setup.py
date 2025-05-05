@@ -14,7 +14,7 @@ setup(
     description="A flexible AWS authentication handler supporting multiple credential sources",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/aws-auth-handler",
+    url="https://github.com/sirrupesh/AWS-Auth-Handler",
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
