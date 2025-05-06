@@ -79,14 +79,26 @@ print(f"Access Key: {credentials['aws_access_key_id']}")
 
 ## Environment Variables
 
-When using environment variables or .env files, the following variables are supported:
+When using environment variables or .env files, the following variables are supported in order of priority:
 
+1. First Priority - Direct Credentials:
 ```
-AWS_ACCESS_KEY_ID=your_access_key
-AWS_SECRET_ACCESS_KEY=your_secret_key
-AWS_SESSION_TOKEN=your_session_token  # Optional
-AWS_DEFAULT_REGION=your_region        # Optional
+AWS_ACCESS_KEY_ID=your_access_key           # Required for direct credential auth
+AWS_SECRET_ACCESS_KEY=your_secret_key       # Required for direct credential auth
+AWS_SESSION_TOKEN=your_session_token        # Optional
 ```
+
+2. Second Priority - Named Profile:
+```
+AWS_PROFILE=your_profile_name               # Optional, used if direct credentials not present
+```
+
+3. Additional Configuration:
+```
+AWS_DEFAULT_REGION=your_region              # Optional
+```
+
+The authenticator will first check for AWS_ACCESS_KEY_ID/AWS_SECRET_ACCESS_KEY, then fall back to AWS_PROFILE if direct credentials are not available.
 
 ## Error Handling
 

@@ -33,7 +33,9 @@ class AWSAuthenticator:
                     aws_secret_access_key=os.environ['AWS_SECRET_ACCESS_KEY'],
                     aws_session_token=os.environ.get('AWS_SESSION_TOKEN')
                 )
-            
+            # Check for explicit credentials in environment variables
+            if 'AWS_PROFILE' in os.environ:
+                return boto3.Session(profile_name=os.environ['AWS_PROFILE'])
             # Fall back to default credentials (EC2/Lambda role, default profile, etc.)
             return boto3.Session()
             
